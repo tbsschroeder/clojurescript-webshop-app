@@ -1,6 +1,6 @@
 body {
     background-color: #051428;
-    margin:2em;
+    margin: 2em;
 }
 
 h1 {
@@ -9,37 +9,37 @@ h1 {
 }
 
 
-.btn-success{
+.btn-success {
     background-color: #AFDC64;
     border-color: #73a028;
 }
 
-.btn-danger{
+.btn-danger {
     background-color: #FF5A78;
     border-color: #c31e3c;
 }
 
-.btn-warning{
+.btn-warning {
     background-color: #F58C6E;
     border-color: #b95046;
 }
 
-.text-warning{
-    color: #FF5A78!important;
+.text-warning {
+    color: #FF5A78 !important;
 }
 
-.card-body,.table-striped tbody tr:nth-of-type(2n+1){
+.card-body, .table-striped tbody tr:nth-of-type(2n+1) {
     background-color: #0b2942;
 }
 
-.card-header{
+.card-header {
     background-color: #6f8da6;
 }
 
 .center {
-    margin-left: auto!important;
-    margin-right: auto!important;
-    text-align: center!important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
 }
 
 .count-input {
@@ -52,7 +52,7 @@ h1 {
     width: 5em;
 }
 
-.amount-article-form .btn{
+.amount-btn {
     font-weight: 900;
     color: white;
     font-size: 1.5em;
@@ -109,6 +109,7 @@ div.card.mb-3 img.small {
     width: 80px;
     height: 80px;
 }
+
 .lds-ring div {
     box-sizing: border-box;
     display: block;
@@ -121,15 +122,19 @@ div.card.mb-3 img.small {
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #cef transparent transparent transparent;
 }
+
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
 }
+
 .lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
 }
+
 .lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
 }
+
 @keyframes lds-ring {
     0% {
         transform: rotate(0deg);
@@ -138,10 +143,15 @@ div.card.mb-3 img.small {
         transform: rotate(360deg);
     }
 }
+
 #article-row {
     margin: 0;
     padding: 0em 2em;
     max-width: 1200px;
-    margin-left: auto!important;
-    margin-right: auto!important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.badge-danger {
+    margin-right: 1em;
 }
