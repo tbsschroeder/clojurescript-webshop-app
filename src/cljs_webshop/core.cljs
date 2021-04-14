@@ -1,24 +1,18 @@
-(ns clojurescript.core
+(ns cljs-webshop.core
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
-            [clojurescript.blocks :as blocks]
-            [clojurescript.ajax :as ajax]))
+            [cljs-webshop.blocks :as blocks]
+            [cljs-webshop.ajax :as ajax]))
 
 (enable-console-print!)
 
 ;; define your app data so that it doesn't get over-written on reload
 
-(def api "http://localhost:8080/api")
-
 (defonce app-state (r/atom {:error    {:status 0 :text ""}
                             :warning  ""
                             :articles []
                             :debug    false
-                            :page     "shop"
-                            :urls     {:all-articles (str api "/article/all")
-                                       :inc-article  (str api "/article/inc")
-                                       :dec-article  (str api "/article/dec")
-                                       :rem-article  (str api "/article/rem")}}))
+                            :page     "shop"}))
 
 (defn body []
   [:div

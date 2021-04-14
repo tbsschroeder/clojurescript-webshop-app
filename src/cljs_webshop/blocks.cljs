@@ -1,6 +1,6 @@
-(ns clojurescript.blocks
+(ns cljs-webshop.blocks
   (:require [clojure.string :refer [blank?]]
-            [clojurescript.ajax :as ajax]))
+            [cljs-webshop.ajax :as ajax]))
 
 (defn- basket [app-state] (filter #(> (:count %) 0) (:articles @app-state)))
 
@@ -34,7 +34,7 @@
      (article->btn-decrease app-state (:title article) (:id article))]
     [:input.form-control.input-number {:value    (:count article)
                                        :width    "3em"
-                                       :disabled "true"}]
+                                       :disabled true}]
     [:div.input-group-append
      (article->btn-increase app-state (:id article))]]])
 
@@ -103,17 +103,15 @@
   [:a.btn.btn-success.co-btn
    {:type     "button"
     :on-click #(swap! app-state assoc :page "checkout")}
-   (let [articles (:articles @app-state)
-         article-count (if (empty? articles)
-                         0
-                         (count (basket app-state)))]
-     (str "Checkout (" article-count ")"))])
+   [:img.co-btn-img {:src "img/checkout.svg"
+                     :alt "cart"}]
+   (str "Checkout (" (count (basket app-state)) ")")])
 
 (defn button->shop [app-state]
   [:a.btn.btn-success.co-btn
    {:type     "button"
     :on-click #(swap! app-state assoc :page "shop")}
-   [:img.co-btn-img {:src "img/shopping-cart.svg"
+   [:img.co-btn-img {:src "img/shop.svg"
                      :alt "cart"}]
    "Shop"])
 
@@ -121,15 +119,30 @@
 (defn error-p [app-state]
   (let [status (get-in @app-state [:error :status])
         text (get-in @app-state [:error :text])]
-    [:p.center.text-warning
+    [:div.center.floater
      (when (pos? status)
-       [:span.badge.badge-danger (str "Error: " status)]) text]))
+
+       [:div.alert.alert-danger.alert-dismissible.fade.show {:role "alert"}
+        [:strong "Error"] text
+        [:button.close {:type         "button"
+                        :data-dismiss "alert"
+                        :aria-label   "Close"
+                        :on-click     #(swap! app-state assoc :error {:status 0 :text ""})}
+         [:span {:aria-hidden "true"} "×"]]])]))
 
 (defn warning-p [app-state]
   (let [text (:warning @app-state)]
-    [:p.center.text-warning
+    [:div.center.floater
      (when (not-empty text)
-       [:span (str "Warning: " text)])]))
+       [:div.alert.alert-warning.alert-dismissible.fade.show {:role "alert"}
+        [:strong "Warning"] text
+        [:button.close {:type         "button"
+                        :data-dismiss "alert"
+                        :aria-label   "Close"
+                        :on-click     #(swap! app-state assoc :warning "")
+                        }
+         [:span {:aria-hidden "true"} "×"]]]
+       )]))
 
 (defn shop [app-state]
   (let [page (:page @app-state)]

@@ -152,6 +152,13 @@ div.card.mb-3 img.small {
     margin-right: auto !important;
 }
 
-.badge-danger {
-    margin-right: 1em;
+.floater {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    z-index: 20;
+}
+
+.floater .alert strong {
+    margin-right: 0.5em;
 }

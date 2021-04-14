@@ -1,7 +1,14 @@
-(ns clojurescript.ajax
+(ns cljs-webshop.ajax
   (:require [cljs.core.async :refer [<!]]
             [cljs-http.client :as http])
   (:require-macros [cljs.core.async.macros :refer [go]]))
+
+(def api "http://localhost:8080/api")
+
+(def urls {:all-articles (str api "/article/all")
+           :inc-article  (str api "/article/inc")
+           :dec-article  (str api "/article/dec")
+           :rem-article  (str api "/article/rem")})
 
 (defn- reset-error! [app-state]
   (swap! app-state assoc :error {:status 0 :text ""}))
@@ -32,7 +39,7 @@
 (defn get-all-articles "Get all articles from localhost"
   [app-state]
   (when (:debug @app-state) (prn "get-all-articles"))
-  (go (let [response (<! (http/get (get-in @app-state [:urls :all-articles])))
+  (go (let [response (<! (http/get (:all-articles urls)))
             status (:status response)
             body (:body response)]
         (if (= 200 status)
@@ -42,8 +49,7 @@
 (defn manipulate-article "Manipulates amount of an article"
   [app-state id key]
   (when (:debug @app-state) (prn (str id " " key)))
-  (prn (str id " " key))
-  (go (let [response (<! (http/post (get-in @app-state [:urls key])
+  (go (let [response (<! (http/post (key urls)
                                     {:form-params {:id id}}))
             status (:status response)
             body (:body response)]

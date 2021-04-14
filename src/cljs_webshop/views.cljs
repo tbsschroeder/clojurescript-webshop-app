@@ -1,5 +1,5 @@
-(ns clojurescript.views
-  (:require [clojurescript.blocks :as blocks]))
+(ns cljs-webshop.views
+  (:require [cljs-webshop.blocks :as blocks]))
 
 ;(defn shop [_]
 ;  (blocks/base-template)
