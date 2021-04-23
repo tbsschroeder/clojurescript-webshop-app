@@ -1,0 +1,28 @@
+{:paths     ["src" "test"]
+ :deps      {clj-http/clj-http          {:mvn/version "3.12.1"}
+             cljs-ajax/cljs-ajax        {:mvn/version "0.8.1"}
+             cljs-http/cljs-http        {:mvn/version "0.1.46"}
+             day8.re-frame/http-fx      {:mvn/version "0.2.3"} ;; TODO
+             day8.re-frame/re-frame-10x {:mvn/version "1.0.1"}
+             org.clojure/clojure        {:mvn/version "1.10.3"}
+             org.clojure/clojurescript  {:mvn/version "1.10.844"}
+             re-frame/re-frame          {:mvn/version "1.2.0"}
+             reagent/reagent            {:mvn/version "1.0.0"}}
+
+ :mvn/repos {"central" {:url "https://repo1.maven.org/maven2/"}
+             "clojars" {:url "https://repo.clojars.org/"}}
+
+ :aliases   {:watch      {:main-opts  ["-m" "shadow.cljs.devtools.cli" "watch" ":app"]
+                          :extra-deps {thheller/shadow-cljs {:mvn/version "2.11.23"}}}
+             :uberjar    {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.193"}}
+                          :exec-fn      hf.depstar/uberjar
+                          :exec-args    {:main-class cljs-webshop.core
+                                         :verbose    true
+                                         :jar        "target/standalone.jar"}}
+             :kibit      {:extra-deps {jonase/kibit {:mvn/version "RELEASE"}}
+                          :main-opts  ["-e" "(require,'[kibit.driver,:as,k]),(k/external-run,[\"src\"],nil)"]}
+             :antq       {:extra-deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
+                          :main-opts  ["-m" "antq.core"]}
+             :cljfmt     {:extra-deps {com.github.weavejester/cljfmt {:mvn/version "RELEASE"}}}
+             :eastwood   {:extra-deps {jonase/eastwood {:mvn/version "RELEASE"}}}
+             :run-server {:main-opts ["-m" "cljs-webshop.core"]}}}

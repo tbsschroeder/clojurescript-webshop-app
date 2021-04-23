@@ -7,7 +7,7 @@ RUN lein with-profile prod cljsbuild once
 
 FROM node:alpine
 WORKDIR /usr/src/app
-ENV DB_NAME="app" DB_HOST="clojure" DB_USER="clojure" DB_PASSWORD="clojure" WEB_DOMAIN="app.example.com"
+ENV DB_NAME="clojure" DB_HOST="clojure" DB_USER="clojure" DB_PASSWORD="clojure" WEB_DOMAIN="app.example.com"
 EXPOSE 80
 CMD ["./run-server.sh"]
 RUN apk --no-cache add libpq bash

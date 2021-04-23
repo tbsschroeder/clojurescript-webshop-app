@@ -101,7 +101,8 @@
 
 (defn button->checkout [app-state]
   [:a.btn.btn-success.co-btn
-   {:type     "button"
+   {:id       "checkout-button"
+    :type     "button"
     :on-click #(swap! app-state assoc :page "checkout")}
    [:img.co-btn-img {:src "img/checkout.svg"
                      :alt "cart"}]
@@ -109,7 +110,8 @@
 
 (defn button->shop [app-state]
   [:a.btn.btn-success.co-btn
-   {:type     "button"
+   {:id       "shop-button"
+    :type     "button"
     :on-click #(swap! app-state assoc :page "shop")}
    [:img.co-btn-img {:src "img/shop.svg"
                      :alt "cart"}]
@@ -141,18 +143,16 @@
                         :aria-label   "Close"
                         :on-click     #(swap! app-state assoc :warning "")
                         }
-         [:span {:aria-hidden "true"} "×"]]]
-       )]))
+         [:span {:aria-hidden "true"} "×"]]])]))
 
 (defn shop [app-state]
-  (let [page (:page @app-state)]
-    (cond
-      (= "shop" page) [:div
-                       (button->checkout app-state)
-                       [:hr {:style {:margin "2rem 0" :background-color "white"}}]
-                       (article->big-cards app-state)
-                       [:hr {:style {:margin "2rem 0" :background-color "white"}}]]
-      (= "checkout" page) [:div
-                           (button->shop app-state)
-                           (checkout->table app-state)]
-      :else (swap! app-state assoc :error {:status "404" :text "internal routing error"}))))
+  [:div
+   (button->checkout app-state)
+   [:hr {:style {:margin "2rem 0" :background-color "white"}}]
+   (article->big-cards app-state)
+   [:hr {:style {:margin "2rem 0" :background-color "white"}}]])
+
+(defn checkout [app-state]
+  [:div
+   (button->shop app-state)
+   (checkout->table app-state)])

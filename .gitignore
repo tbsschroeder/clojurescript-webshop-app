@@ -53,6 +53,8 @@ repl-port
 # Builds
 out/
 build/
+.cpcache
+.shadow-cljs
 
 .#*
 *.sqlite3

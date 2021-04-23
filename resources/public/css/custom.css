@@ -1,32 +1,32 @@
-body {
-    background-color: #051428;
-    margin: 2em;
-}
+/*body {*/
+/*    background-color: #051428;*/
+/*    margin: 2em;*/
+/*}*/
 
-h1 {
-    /*color: #05DCC8;*/
-    color: #d7dbe0;
-}
+/*h1 {*/
+/*    !*color: #05DCC8;*!*/
+/*    color: #d7dbe0;*/
+/*}*/
 
 
-.btn-success {
-    background-color: #AFDC64;
-    border-color: #73a028;
-}
+/*.btn-success {*/
+/*    background-color: #AFDC64;*/
+/*    border-color: #73a028;*/
+/*}*/
 
-.btn-danger {
-    background-color: #FF5A78;
-    border-color: #c31e3c;
-}
+/*.btn-danger {*/
+/*    background-color: #FF5A78;*/
+/*    border-color: #c31e3c;*/
+/*}*/
 
-.btn-warning {
-    background-color: #F58C6E;
-    border-color: #b95046;
-}
+/*.btn-warning {*/
+/*    background-color: #F58C6E;*/
+/*    border-color: #b95046;*/
+/*}*/
 
-.text-warning {
-    color: #FF5A78 !important;
-}
+/*.text-warning {*/
+/*    color: #FF5A78 !important;*/
+/*}*/
 
 .card-body, .table-striped tbody tr:nth-of-type(2n+1) {
     background-color: #0b2942;
@@ -117,10 +117,10 @@ div.card.mb-3 img.small {
     width: 64px;
     height: 64px;
     margin: 8px;
-    border: 8px solid #cef;
+    border: 8px solid #000;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #cef transparent transparent transparent;
+    border-color: #444 transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {

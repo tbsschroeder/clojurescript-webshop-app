@@ -20,8 +20,7 @@
   (reset-error! app-state)
   (reset-warning! app-state))
 
-;; Callbacks
-
+;; Generic callbacks
 (defn- error-callback [app-state status body]
   (when (:debug @app-state) (prn "error-callback"))
   (if (= 0 status)
@@ -34,8 +33,7 @@
     (reset-status! app-state)
     (swap! app-state assoc :articles (:articles body))))
 
-;; Ajax
-
+;; Async requests
 (defn get-all-articles "Get all articles from localhost"
   [app-state]
   (when (:debug @app-state) (prn "get-all-articles"))

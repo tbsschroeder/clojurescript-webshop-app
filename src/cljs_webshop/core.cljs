@@ -1,6 +1,6 @@
 (ns cljs-webshop.core
-  (:require [reagent.core :as r]
-            [reagent.dom :as rdom]
+  (:require [reagent.dom]
+            [re-frame.core :as rf]
             [cljs-webshop.blocks :as blocks]
             [cljs-webshop.ajax :as ajax]))
 
@@ -8,27 +8,47 @@
 
 ;; define your app data so that it doesn't get over-written on reload
 
-(defonce app-state (r/atom {:error    {:status 0 :text ""}
-                            :warning  ""
-                            :articles []
-                            :debug    false
-                            :page     "shop"}))
+(defonce app-state (atom {:error    {:status 0 :text ""}
+                          :warning  ""
+                          :articles []
+                          :debug    false
+                          :page     "shop"}))
+
+;; -- UI
+
+(defn render-status []
+  (blocks/error-p app-state)
+  (blocks/warning-p app-state))
+
+(defn render-body []
+  (let [page (:page @app-state)]
+    (cond
+      (= "shop" page) (blocks/shop app-state)
+      (= "checkout" page) (blocks/checkout app-state)
+      :else (swap! app-state assoc :error {:status "404" :text "internal routing error"}))))
 
 (defn body []
   [:div
-   (blocks/error-p app-state)
-   (blocks/warning-p app-state)
-   (blocks/shop app-state)])
+   (render-status)
+   (render-body)])
 
-;; MAIN
-(rdom/render [body]
-             (. js/document (getElementById "app")))
+;; -- Entry Point
 
-(ajax/get-all-articles app-state)
+(defn render
+  []
+  (reagent.dom/render [body]
+             (js/document.getElementById "app")))
 
+(defn ^:dev/after-load clear-cache-and-render!
+  []
+  ;; The `:dev/after-load` metadata causes this function to be called
+  ;; after shadow-cljs hot-reloads code. We force a UI update by clearing
+  ;; the Reframe subscription cache.
+  (rf/clear-subscription-cache!)
+  (render)
+  (ajax/get-all-articles app-state))
 
-(defn on-js-reload []
-  ;; optionally touch your app-state to force rerendering depending on
-  ;; your application
-  ;; (swap! app-state update-in [:__figwheel_counter] inc)
-  )
+(defn run
+  []
+  (rf/dispatch-sync [:initialize])
+  (render))

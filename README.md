@@ -6,7 +6,7 @@ This webshop app is built with [ClojureScript](https://clojurescript.org/) on [R
 
 ## Requirements
 
-Short and crisp: Always have [Docker](https://docs.docker.com/install/) installed.
+Short and crisp: `npm` and `clj`.
 
 ## Setup
 
@@ -15,44 +15,34 @@ In their just hit
 
     docker-compose up
 
-Then you can start the system:
-
-    lein run
-
-To get an interactive development environment run:
+Second, install the dependencies with npm:
 
     npm install
-    lein figwheel
 
-and open your browser at [localhost:3449](http://localhost:3449/).
-This will auto compile and send all changes to the browser without the
-need to reload. After the compilation process is complete, you will
-get a Browser Connected REPL. An easy way to try it is:
+Third, you can start the frontend service with:
 
-    (js/alert "Am I connected?")
+    clj -M:watch
 
-and you should see an alert in the browser window.
-
-To clean all compiled files:
-
-    lein clean
-
-To create a production build run:
-
-    lein do clean, cljsbuild once min
-
-And open your browser in `resources/public/index.html`. You will not
-get live reloading, nor a REPL. 
+You find the application at [http://localhost:8700]{http://localhost:8700}. Open re-frame 10x with `Ctrl+h`.
 
 ### Helper
 
 You can run multiple helping tools like code formatting, linting, interactive
 dependency checker and code analyzer via:
 
-    lein cljfmt fix
-    lein eastwood
-    lein ancient upgrade :interactive :check-clojure
-    lein kibit
+    clj -A:cljfmt fix
+    clj -A:eastwood
+    clj -A:antq
+    clj -A:kibit
+
+## Setup
+
+There are sample tests, which can be run with
+
+    lein doo
+
+which starts an ClojureScript autobuilder for the test profile and runs slimerjs on it when it's done.
+
 
 ## Demo
 
