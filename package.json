@@ -3,10 +3,6 @@
     "watch": "shadow-cljs watch app;",
     "server": "shadow-cljs server;"
   },
-  "devDependencies": {
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
-  },
   "dependencies": {
     "create-react-class": "^15.6.3",
     "highlight.js": "9.18.1",
