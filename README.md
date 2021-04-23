@@ -10,8 +10,8 @@ Short and crisp: `npm` and `clj`.
 
 ## Setup
 
-First, the app needs the database from former project [Clojure Webshop App](https://github.com/tbsschroeder/clojure-webshop-app).
-In their just hit
+First, the app needs the database from my former project [Clojure Webshop App](https://github.com/tbsschroeder/clojure-webshop-app).
+There just hit
 
     docker-compose up
 
