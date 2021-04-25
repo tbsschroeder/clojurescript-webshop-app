@@ -12,8 +12,16 @@
  :mvn/repos {"central" {:url "https://repo1.maven.org/maven2/"}
              "clojars" {:url "https://repo.clojars.org/"}}
 
- :aliases   {:watch      {:main-opts  ["-m" "shadow.cljs.devtools.cli" "watch" ":app"]
-                          :extra-deps {thheller/shadow-cljs {:mvn/version "2.11.23"}}}
+ :aliases   {:test       {:extra-paths ["src/test"]
+                          :extra-deps  {lambdaisland/kaocha           {:mvn/version "1.0.829"}
+                                        lambdaisland/kaocha-cloverage {:mvn/version "1.0.75"}
+                                        day8.re-frame/test            {:mvn/version "0.1.5"}}
+                          :main-opts   ["-m" "kaocha.runner"]}
+             :clj-kondo  {:extra-deps {clj-kondo/clj-kondo {:mvn/version "RELEASE"}}
+                          :jvm-opts   ["-Dghostwheel.enabled=true"]
+                          :main-opts  ["-m" "clj-kondo.main"]}
+             :watch      {:main-opts  ["-m" "shadow.cljs.devtools.cli" "watch" ":app"]
+                          :extra-deps {thheller/shadow-cljs {:mvn/version "2.12.5"}}}
              :uberjar    {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.193"}}
                           :exec-fn      hf.depstar/uberjar
                           :exec-args    {:main-class cljs-webshop.core

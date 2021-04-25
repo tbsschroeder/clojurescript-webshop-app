@@ -22,21 +22,21 @@
 
 ;; Generic callbacks
 (defn- error-callback [app-state status body]
-  (when (:debug @app-state) (prn "error-callback"))
+  (when (:debug @app-state) (js/console.log "error-callback"))
   (if (= 0 status)
     (swap! app-state assoc :error {:status "?" :text "unknown error"})
     (swap! app-state assoc :error {:status status :text body})))
 
 (defn- success-callback-articles [app-state body]
   (do
-    (when (:debug @app-state) (prn "success-callback-articles"))
+    (when (:debug @app-state) (js/console.log "success-callback-articles"))
     (reset-status! app-state)
     (swap! app-state assoc :articles (:articles body))))
 
 ;; Async requests
 (defn get-all-articles "Get all articles from localhost"
   [app-state]
-  (when (:debug @app-state) (prn "get-all-articles"))
+  (when (:debug @app-state) (js/console.log "get-all-articles"))
   (go (let [response (<! (http/get (:all-articles urls)))
             status (:status response)
             body (:body response)]
@@ -46,7 +46,7 @@
 
 (defn manipulate-article "Manipulates amount of an article"
   [app-state id key]
-  (when (:debug @app-state) (prn (str id " " key)))
+  (when (:debug @app-state) (js/console.log (str id " " key)))
   (go (let [response (<! (http/post (key urls)
                                     {:form-params {:id id}}))
             status (:status response)

@@ -1,6 +1,7 @@
 (ns cljs-webshop.core
-  (:require [reagent.dom]
-            [re-frame.core :as rf]
+  (:require [day8.re-frame.http-fx]
+            [reagent.dom]
+            ;[re-frame.core :as rf]
             [cljs-webshop.blocks :as blocks]
             [cljs-webshop.ajax :as ajax]))
 
@@ -11,7 +12,7 @@
 (defonce app-state (atom {:error    {:status 0 :text ""}
                           :warning  ""
                           :articles []
-                          :debug    false
+                          :debug    true
                           :page     "shop"}))
 
 ;; -- UI
@@ -44,11 +45,13 @@
   ;; The `:dev/after-load` metadata causes this function to be called
   ;; after shadow-cljs hot-reloads code. We force a UI update by clearing
   ;; the Reframe subscription cache.
-  (rf/clear-subscription-cache!)
+  ;(rf/clear-subscription-cache!)
   (render)
   (ajax/get-all-articles app-state))
 
-(defn run
+(defn init
+  "Entrypoint into the application."
   []
-  (rf/dispatch-sync [:initialize])
-  (render))
+  ;(rf/dispatch-sync [:initialize])
+  (render)
+  (ajax/get-all-articles app-state))

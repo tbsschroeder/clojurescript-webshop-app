@@ -38,22 +38,26 @@
     [:div.input-group-append
      (article->btn-increase app-state (:id article))]]])
 
+(defn- loader []
+  [:div.center
+   [:div.lds-ring [:div] [:div] [:div] [:div]]
+   [:p "Sexy articles will appear soon!"]])
+
 (defn article->big-cards [app-state]
   [:div.articles
    (if (empty? (:articles @app-state))
-     [:div.center [:div.lds-ring [:div] [:div] [:div] [:div]]])
-   [:div.row {:id "article-row"}
-    (for [article (sort-by :title (:articles @app-state))]
-      ^{:key (str "article-" (:id article))}
-      [:div.card.mb-3
-       [:h3.card-header (:title article)]
-       [:img.big {:src (:image article) :alt "article image"}]
-       [:div.card-body
-        [:p.card-text (:description article)]
-        (article->amount-row app-state article)]
-       [:div.card-footer
-        [:small.text-muted (str "Category: " (:category article))]]])]
-   ])
+     (loader)
+     [:div.row {:id "article-row"}
+      (for [article (sort-by :title (:articles @app-state))]
+        ^{:key (str "article-" (:id article))}
+        [:div.card.mb-3
+         [:h3.card-header (:title article)]
+         [:img.big {:src (:image article) :alt "article image"}]
+         [:div.card-body
+          [:p.card-text (:description article)]
+          (article->amount-row app-state article)]
+         [:div.card-footer
+          [:small.text-muted (str "Category: " (:category article))]]])])])
 
 (defn article->checkout [app-state]
   [:tbody.basket
