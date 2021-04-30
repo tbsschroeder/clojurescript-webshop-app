@@ -1,7 +1,7 @@
 (ns cljs-webshop.blocks-test
   (:require [reagent.core :as r]
             [cljs.test :refer-macros [deftest is testing run-tests]]
-            [cljs-webshop.blocks :as blocks]))
+            [cljs-webshop.views :as blocks]))
 
 (defonce test-state (r/atom {:error    {:status 0 :text ""}
                              :warning  ""

@@ -1,6 +1,6 @@
 (ns cljs-webshop.ajax-test
   (:require [cljs.test :refer-macros [deftest is testing run-tests]]
-            [cljs-webshop.ajax :as ajax]))
+            [cljs-webshop.events :as ajax]))
 
 (deftest test-numbers
   (is (= 1 1)))
