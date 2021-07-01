@@ -7,7 +7,7 @@
             [reagent.dom]
             [reagent.core :as reagent]))
 
-(enable-console-print!)                                     ;; so that println writes to `console.log`
+(enable-console-print!)                                     ;; println writes to `console.log`
 
 ;; -- UI
 
@@ -15,11 +15,11 @@
   [:div
    (views/error-p)
    (views/warning-p)
-   (let [page @(rf/subscribe [:page])]
+   (let [container @(rf/subscribe [:container])]
      (cond
-       (= "shop" page) (views/shop)
-       (= "checkout" page) (views/checkout)
-       :else (rf/dispatch [:display-error "404" (str "internal routing error for '" page "'")])))])
+       (= "shop" container) (views/shop)
+       (= "checkout" container) (views/checkout)
+       :else (rf/dispatch [:display-error "404" (str "internal routing error for '" container "'")])))])
 
 ;; -- Entry Point
 

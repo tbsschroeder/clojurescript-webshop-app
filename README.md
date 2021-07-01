@@ -1,8 +1,8 @@
 # Webshop App in CLJS
 
-This webshop app is built with [ClojureScript](https://clojurescript.org/) on [Reagent] and compiled with
-[Figwheel](https://github.com/bhauman/lein-figwheel). It's also an alternative frontend for my 
-[Clojure Webshop App](https://github.com/tbsschroeder/clojure-webshop-app).
+This webshop app is built with https://clojurescript.org/[ClojureScript] on 
+http://day8.github.io/re-frame/[reframe]. It's also an alternative frontend for my
+https://github.com/tbsschroeder/clojure-webshop-app[Clojure Webshop App].
 
 ## Requirements
 
@@ -10,7 +10,7 @@ Short and crisp: `npm` and `clj`.
 
 ## Setup
 
-First, the app needs the database from my former project [Clojure Webshop App](https://github.com/tbsschroeder/clojure-webshop-app).
+First, the app needs the database from my former project https://github.com/tbsschroeder/clojure-webshop-app[Clojure Webshop App].
 There just hit
 
     docker-compose up
@@ -23,7 +23,7 @@ Third, you can start the frontend service with:
 
     clj -M:watch
 
-You find the application at [http://localhost:8700]{http://localhost:8700}. Open re-frame 10x with `Ctrl+h`.
+You find the application at http://localhost:8700[http://localhost:8700]. Open re-frame 10x with `Ctrl+h`.
 
 ### Helper
 
@@ -35,24 +35,25 @@ dependency checker and code analyzer via:
     clj -A:antq
     clj -A:kibit
 
-## Setup
+## Tests
+_under construction_
 
 There are sample tests, which can be run with
 
-    lein doo
+    lein doo ??
 
 which starts an ClojureScript autobuilder for the test profile and runs slimerjs on it when it's done.
 
 
 ## Demo
 
-![sample](img/demo.png)
+image::img/demo.png[sample]
 
 
 
 ## License
 ___
-*All images are under the copyright of [METRO AG](https://www.metroag.de/).*
+*All images are under the copyright of https://www.metroag.de/[METRO AG].*
 ___
 
 The MIT License (MIT)

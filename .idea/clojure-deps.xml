@@ -2,7 +2,18 @@
 <project version="4">
   <component name="DepsProjectSettings">
     <option name="enabledAliases">
-      <set />
+      <set>
+        <option value="antq" />
+        <option value="clj-kondo" />
+        <option value="cljfmt" />
+        <option value="deps" />
+        <option value="eastwood" />
+        <option value="kibit" />
+        <option value="run-server" />
+        <option value="test" />
+        <option value="uberjar" />
+        <option value="watch" />
+      </set>
     </option>
   </component>
   <component name="DepsProjectsManager">

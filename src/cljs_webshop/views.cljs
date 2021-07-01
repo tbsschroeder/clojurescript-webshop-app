@@ -96,20 +96,17 @@
        [:th "Image"]
        [:th "Count"]
        [:th "Remove"]]]
-     (article->checkout)
-     ]))
+     (article->checkout)]))
 
 (defn button->checkout []
   [:a.btn.btn-success.co-btn
    {:id       "checkout-button"
     :type     "button"
-    :on-click #(rf/dispatch [:change-page "checkout"])
-    }
+    :on-click #(rf/dispatch [:change-page "checkout"])}
    [:img.co-btn-img {:src "img/checkout.svg"
                      :alt "cart"}]
    (str "Checkout (" @(rf/subscribe [:basket-count]) ")")
-   ""
-   ])
+   ""])
 
 (defn button->shop []
   [:a.btn.btn-success.co-btn
@@ -143,8 +140,7 @@
         [:button.close {:type         "button"
                         :data-dismiss "alert"
                         :aria-label   "Close"
-                        :on-click     #(rf/dispatch [:clear-warning])
-                        }
+                        :on-click     #(rf/dispatch [:clear-warning])}
          [:span {:aria-hidden "true"} "×"]]])]))
 
 (defn shop []
