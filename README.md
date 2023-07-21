@@ -1,8 +1,8 @@
 # Webshop App in CLJS
 
-This webshop app is built with https://clojurescript.org/[ClojureScript] on 
-http://day8.github.io/re-frame/[reframe]. It's also an alternative frontend for my
-https://github.com/tbsschroeder/clojure-webshop-app[Clojure Webshop App].
+This webshop app is built with [ClojureScript](https://clojurescript.org/) on
+[reframe](http://day8.github.io/re-frame/). It's also an alternative frontend for my
+[Clojure Webshop App](https://github.com/tbsschroeder/clojure-webshop-app).
 
 ## Requirements
 
@@ -10,7 +10,7 @@ Short and crisp: `npm` and `clj`.
 
 ## Setup
 
-First, the app needs the database from my former project https://github.com/tbsschroeder/clojure-webshop-app[Clojure Webshop App].
+First, the app needs the database from my former project [Clojure Webshop App](https://github.com/tbsschroeder/clojure-webshop-app).
 There just hit
 
     docker-compose up
@@ -23,7 +23,7 @@ Third, you can start the frontend service with:
 
     clj -M:watch
 
-You find the application at http://localhost:8700[http://localhost:8700]. Open re-frame 10x with `Ctrl+h`.
+You find the application at [http://localhost:8700](http://localhost:8700). Open re-frame 10x with `Ctrl+h`.
 
 ### Helper
 
@@ -47,18 +47,18 @@ which starts an ClojureScript autobuilder for the test profile and runs slimerjs
 
 ## Demo
 
-image::img/demo.png[sample]
+![sample](img/demo.png)
 
 
 
 ## License
 ___
-*All images are under the copyright of https://www.metroag.de/[METRO AG].*
+*All images are under the copyright of [METRO AG](https://www.metroag.de/).*
 ___
 
 The MIT License (MIT)
 
-*Copyright © 2021 Dr. Tobias Schröder*
+*Copyright © 2023 Dr. Tobias Schröder*
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
