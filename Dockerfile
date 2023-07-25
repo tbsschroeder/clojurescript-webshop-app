@@ -1,9 +1,9 @@
-FROM theasp/clojurescript-nodejs:alpine as build
-WORKDIR /usr/src/app
-COPY project.clj ./project.clj
-RUN apk --no-cache add python alpine-sdk postgresql-dev && lein do deps, npm install
-COPY ./ /usr/src/app/
-RUN lein with-profile prod cljsbuild once
+# FROM theasp/clojurescript-nodejs:alpine as build
+# WORKDIR /usr/src/app
+# COPY deps.edn ./deps.edn
+# RUN apk --no-cache add python alpine-sdk postgresql-dev && lein do deps, npm install
+# COPY ./ /usr/src/app/
+# RUN clj-M:watch
 
 FROM node:alpine
 WORKDIR /usr/src/app

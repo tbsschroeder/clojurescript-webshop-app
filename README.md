@@ -10,20 +10,21 @@ Short and crisp: `npm` and `clj`.
 
 ## Setup
 
-First, the app needs the database from my former project [Clojure Webshop App](https://github.com/tbsschroeder/clojure-webshop-app).
-There just hit
+This app needs the database and backend from my former project [Clojure Webshop App](https://github.com/tbsschroeder/clojure-webshop-app).
+Please follow the Readme there.
 
-    docker-compose up
+First, install the dependencies with npm:
 
-Second, install the dependencies with npm:
+    yarn
 
-    npm install
-
-Third, you can start the frontend service with:
+Then, you can start the frontend service with:
 
     clj -M:watch
 
 You find the application at [http://localhost:8700](http://localhost:8700). Open re-frame 10x with `Ctrl+h`.
+
+## Docker
+_under construction_
 
 ### Helper
 

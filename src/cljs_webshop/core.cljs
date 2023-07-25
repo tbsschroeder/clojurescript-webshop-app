@@ -1,15 +1,17 @@
 (ns cljs-webshop.core
-  (:require [cljs-webshop.events]
+  (:require ["react-dom/client" :refer [createRoot]]
+            [cljs-webshop.events]
             [cljs-webshop.views :as views]
-            [cljs-webshop.events]                           ;; These two are only required to make the compiler
-            [cljs-webshop.subs]                             ;; load them (see re-frame docs/App-Structure.md)
+            [cljs-webshop.events]
+            [cljs-webshop.subs]
+            [goog.dom :as gdom]
             [re-frame.core :as rf]
-            [reagent.dom]
-            [reagent.core :as reagent]))
+            [reagent.core :as r]
+            [reagent.dom]))
 
-(enable-console-print!)                                     ;; println writes to `console.log`
+(enable-console-print!)
 
-;; -- UI
+;; -- UI -------------------------------------------------------------
 
 (defn body []
   [:div
@@ -21,12 +23,13 @@
        (= "checkout" container) (views/checkout)
        :else (rf/dispatch [:display-error "404" (str "internal routing error for '" container "'")])))])
 
-;; -- Entry Point
+;; -- Entry Point -------------------------------------------------------------
+
+(defonce root (createRoot (gdom/getElement "app")))
 
 (defn render
   []
-  (reagent.dom/render [body]
-                      (js/document.getElementById "app")))
+  (.render root (r/as-element [body])))
 
 (defn ^:dev/after-load clear-cache-and-render!
   []

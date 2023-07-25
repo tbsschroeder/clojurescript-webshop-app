@@ -86,7 +86,12 @@
 (defn checkout->table []
   (if (zero? @(rf/subscribe [:basket-count]))
     [:div
-     [:h5.text-info.center "Empty shopping cart! Manager cat is not amused!"]
+     [:br]
+     [:br]
+     [:h5.text-info.center "You have en empty shopping cart!"]
+     [:h5.text-info.center "My manager is not amused!"]
+     [:br]
+     [:br]
      (shopping-cat)]
     [:table.table.table-striped.table-hover {:font-size ""}
      [:thead
