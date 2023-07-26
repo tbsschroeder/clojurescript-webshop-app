@@ -5,4 +5,5 @@
       (assoc :error {:status 0 :text "a"})
       (assoc :warning "")
       (assoc :articles [])
-      (assoc :container "shop")))
+      (assoc :container "shop")
+      (assoc :detail nil)))

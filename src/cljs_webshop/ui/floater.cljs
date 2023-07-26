@@ -1,4 +1,4 @@
-(ns cljs-webshop.floater
+(ns cljs-webshop.ui.floater
   (:require [re-frame.core :as rf]))
 
 (defn error-p []

@@ -101,5 +101,6 @@
 
 (rf/reg-event-db
  :change-page
- (fn [db [_ val]]
-   (assoc db :container val)))
+ (fn [db [_ val id]]
+   (assoc db :detail id
+             :container val)))

@@ -19,9 +19,14 @@
    (:warning db)))
 
 (rf/reg-sub
- :container
- (fn [db _]
-   (:container db)))
+  :container
+  (fn [db _]
+    (:container db)))
+
+(rf/reg-sub
+  :detail
+  (fn [db _]
+    (:detail db)))
 
 (rf/reg-sub
  :basket
@@ -32,8 +37,12 @@
 (rf/reg-sub
  :basket-count
  (fn [db _]
-   (count (filter #(pos? (:count %))
-                  (:articles db)))))
+   (->> (:articles db)
+        (map :count)
+        (reduce +))
+   ; get the numbers of articles only
+   ;(count (filter #(pos? (:count %)) (:articles db)))
+   ))
 
 (rf/reg-sub
  :get-article

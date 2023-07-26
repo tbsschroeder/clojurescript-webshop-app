@@ -1,6 +1,6 @@
 (ns cljs-webshop.views-test
   (:require [cljs.test :refer-macros [deftest is testing run-tests]]
-            [cljs-webshop.views :as blocks]))
+            [cljs-webshop.floater :as blocks]))
 
 ;https://github.com/day8/re-frame/blob/master/docs/Testing.md
 ;https://github.com/day8/re-frame-test

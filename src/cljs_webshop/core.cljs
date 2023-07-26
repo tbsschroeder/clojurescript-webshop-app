@@ -1,7 +1,10 @@
 (ns cljs-webshop.core
   (:require ["react-dom/client" :refer [createRoot]]
             [cljs-webshop.events]
-            [cljs-webshop.views :as views]
+            [cljs-webshop.ui.checkout :as c]
+            [cljs-webshop.ui.detail :as d]
+            [cljs-webshop.ui.shop :as s]
+            [cljs-webshop.ui.floater :as f]
             [cljs-webshop.events]
             [cljs-webshop.subs]
             [goog.dom :as gdom]
@@ -15,12 +18,13 @@
 
 (defn body []
   [:div
-   (views/error-p)
-   (views/warning-p)
+   (f/error-p)
+   (f/warning-p)
    (let [container @(rf/subscribe [:container])]
      (cond
-       (= "shop" container) (views/shop)
-       (= "checkout" container) (views/checkout)
+       (= "shop" container) (s/shop)
+       (= "checkout" container) (c/checkout)
+       (= "detail" container) (d/detail)
        :else (rf/dispatch [:display-error "404" (str "internal routing error for '" container "'")])))])
 
 ;; -- Entry Point -------------------------------------------------------------
