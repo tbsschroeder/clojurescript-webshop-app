@@ -6,4 +6,5 @@
       (assoc :warning "")
       (assoc :articles [])
       (assoc :container "shop")
-      (assoc :detail nil)))
+      (assoc :detail nil)
+      (assoc :search-term nil)))

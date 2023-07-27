@@ -49,3 +49,9 @@
  (fn [db [_ id]]
    (first (filter #(= (:id %) id)
                   (:articles db)))))
+
+(rf/reg-sub
+  :search-articles
+  (fn [db [_ term]]
+    (first (filter #(clojure.string/includes? term (:title %))
+                   (:articles db)))))

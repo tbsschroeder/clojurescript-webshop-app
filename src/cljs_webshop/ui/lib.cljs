@@ -9,7 +9,7 @@
    [:img.co-btn-img {:src "img/checkout.svg"
                      :alt "cart"}]
    [:span  "Checkout "]
-   [:span.badge.bg-warning @(rf/subscribe [:basket-count])]
+   [:span.badge.bg-primary @(rf/subscribe [:basket-count])]
    ""])
 
 (defn button->shop []
@@ -20,6 +20,22 @@
    [:img.co-btn-img {:src "img/shop.svg"
                      :alt "cart"}]
    "Shop"])
+
+(defn navbar->shop [button]
+  [:nav.navbar.navbar-expand-lg.bg-primary {:data-bs-theme "dark"}
+   [:div.container-fluid
+    [:a.navbar-brand {:href "#"} "Amazing Web Shop Application"]
+    [:button.navbar-toggler {:type "button"
+                             :data-bs-toggle "collapse"
+                             :data-bs-target "#navbarColor01"
+                             :aria-controls "navbarColor01"
+                             :aria-expanded "false"
+                             :aria-label "Toggle navigation"}
+     [:span.navbar-toggler-icon]]
+    [:div#navbarColor01.collapse.navbar-collapse
+     [:ul.navbar-nav.me-auto]
+     (button)
+     ]]])
 
 (defn- article->btn-increase [id]
   [:button.btn.btn-success.amount-btn

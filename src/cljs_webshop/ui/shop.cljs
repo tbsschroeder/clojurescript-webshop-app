@@ -2,29 +2,6 @@
   (:require [re-frame.core :as rf]
             [cljs-webshop.ui.lib :as lib]))
 
-(defn form->search []
-  [:form.d-flex
-   [:input.form-control.me-sm-2 {:type "search"
-                                 :placeholder "Search"}]
-   [:button.btn.btn-secondary.my-2.my-sm-0 {:type "submit"} "Search"]])
-
-(defn navbar->shop []
-  [:nav.navbar.navbar-expand-lg.bg-primary {:data-bs-theme "dark"}
-   [:div.container-fluid
-    [:a.navbar-brand {:href "#"} "Amazing Web Shop Application"]
-    [:button.navbar-toggler {:type "button"
-                             :data-bs-toggle "collapse"
-                             :data-bs-target "#navbarColor01"
-                             :aria-controls "navbarColor01"
-                             :aria-expanded "false"
-                             :aria-label "Toggle navigation"}
-     [:span.navbar-toggler-icon]]
-    [:div#navbarColor01.collapse.navbar-collapse
-     [:ul.navbar-nav.me-auto]
-     (form->search)
-     (lib/button->checkout)
-     ]]])
-
 (defn- loader []
   [:div.center
    [:div.lds-ring [:div] [:div] [:div] [:div]]
@@ -52,6 +29,6 @@
 
 (defn shop []
   [:div.container
-   (navbar->shop)
+   (lib/navbar->shop lib/button->checkout)
    (article->big-cards)
    [:hr {:style {:margin "2rem 0" :background-color "#555"}}]])

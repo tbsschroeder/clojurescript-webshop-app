@@ -2,22 +2,6 @@
   (:require [re-frame.core :as rf]
             [cljs-webshop.ui.lib :as lib]))
 
-(defn navbar->checkout []
-  [:nav.navbar.navbar-expand-lg.bg-primary {:data-bs-theme "dark"}
-   [:div.container-fluid
-    [:a.navbar-brand {:href "#"} "Amazing Web Shop Application"]
-    [:button.navbar-toggler {:type "button"
-                             :data-bs-toggle "collapse"
-                             :data-bs-target "#navbarColor01"
-                             :aria-controls "navbarColor01"
-                             :aria-expanded "false"
-                             :aria-label "Toggle navigation"}
-     [:span.navbar-toggler-icon]]
-    [:div#navbarColor01.collapse.navbar-collapse
-     [:ul.navbar-nav.me-auto]
-     (lib/button->shop)
-     ]]])
-
 (defn- article->btn-remove [id]
   [:button.btn.btn-warning
    {:type     "button"
@@ -75,5 +59,5 @@
 
 (defn checkout []
   [:div.container
-   (navbar->checkout)
+   (lib/navbar->shop lib/button->shop)
    (checkout->table)])
