@@ -24,7 +24,9 @@
 (defn navbar->shop [button]
   [:nav.navbar.navbar-expand-lg.bg-primary {:data-bs-theme "dark"}
    [:div.container-fluid
-    [:a.navbar-brand {:href "#"} "Amazing Web Shop Application"]
+    [:a.navbar-brand {:href "#"
+                      :on-click #(rf/dispatch [:change-page "shop"])}
+     "Amazing Web Shop Application"]
     [:button.navbar-toggler {:type "button"
                              :data-bs-toggle "collapse"
                              :data-bs-target "#navbarColor01"
