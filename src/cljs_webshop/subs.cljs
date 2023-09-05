@@ -1,8 +1,6 @@
 (ns cljs-webshop.subs
   (:require [re-frame.core :as rf]))
 
-;; Because subscriptions return a ratom, they must always be dereferenced to obtain the value.
-
 (rf/reg-sub
  :articles
  (fn [db _]
